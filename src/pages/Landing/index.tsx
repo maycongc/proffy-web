@@ -1,22 +1,21 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import logoImg from '../../assets/images/logo.svg'
-import landingImg from '../../assets/images/landing.svg'
+import logoImg from '../../assets/images/logo.svg';
+import landingImg from '../../assets/images/landing.svg';
 
-import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
-import studyIcon from '../../assets/images/icons/study.svg'
-import giveClassesIcon from '../../assets/images/icons/give-classes.svg'
+import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
+import studyIcon from '../../assets/images/icons/study.svg';
+import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 
-import './styles.css'
+import './styles.css';
 
-const Landing = () => {
+const Landing = (): JSX.Element => {
   return (
     <div id="page-landing">
       <div id="page-landing-content" className="">
-
         <div className="logo-container">
-          <img src={logoImg} alt="Proffy"/>
+          <img src={logoImg} alt="Proffy" />
           <h2>Sua plataforma de estudos online!</h2>
         </div>
 
@@ -28,23 +27,23 @@ const Landing = () => {
 
         <div className="buttons-container">
           <Link to="/study" className="study">
-            <img src={studyIcon} alt="Estudar"/>
+            <img src={studyIcon} alt="Estudar" />
             Estudar
           </Link>
 
           <Link to="/give-classes" className="give-classes">
-            <img src={giveClassesIcon} alt="Dar Aula"/>
+            <img src={giveClassesIcon} alt="Dar Aula" />
             Dar Aula
           </Link>
         </div>
 
         <span className="total-connections">
-          Total de 200 conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo"/>
+          Total de 200 conexões já realizadas
+          <img src={purpleHeartIcon} alt="Coração roxo" />
         </span>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;
