@@ -3,39 +3,59 @@ import React from 'react';
 import './styles.css';
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
+import api from '../../services/api';
 
-const TeacherItem = (): JSX.Element => {
+interface TeacherItemProps {
+  id: string;
+  name: string;
+  subject: string;
+  avatar: string;
+  bio: string;
+  cost: string;
+  whatsapp: string;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({
+  id,
+  name,
+  subject,
+  avatar,
+  bio,
+  cost,
+  whatsapp,
+}) => {
+  function handleNewConnection() {
+    api.post('/connections', {
+      user_id: id,
+    });
+  }
+
   return (
     <article className="teacher-item">
       <header>
-        <img
-          src="https://kprofiles.com/wp-content/uploads/2019/12/WhatsApp-Image-2019-12-03-at-4.13.01-PM-799x800.jpeg"
-          alt="Professor"
-        />
+        <img src={avatar} alt="Professor" />
         <div>
-          <strong>Professor Exemplo</strong>
-          <span>Química</span>
+          <strong>{name}</strong>
+          <span>{subject}</span>
         </div>
       </header>
 
-      <p>
-        Entusiasta das melhores tecnologias de química avançada.
-        <br />
-        <br />
-        Apaixonado por explodir coisas em labolatório e por mudar a vida das
-        pessoas através de experiências. Mais de 200.000 pessoas já passaram por
-        uma de minhas explosões.
-      </p>
+      <p>{bio}</p>
 
       <footer>
         <p>
           Valor/hora
-          <strong>R$ 20,00</strong>
+          <strong>R$ {cost}</strong>
         </p>
-        <button type="button">
+        <a
+          onClick={handleNewConnection}
+          href={`https://wa.me/${whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={whatsappIcon} alt="Whatsapp" />
           Entrar em contato
-        </button>
+        </a>
       </footer>
     </article>
   );
