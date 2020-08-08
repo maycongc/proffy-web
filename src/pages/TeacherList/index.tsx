@@ -7,7 +7,7 @@ import Input from '../../components/Input';
 import Select from '../../components/Select';
 import api from '../../services/api';
 
-interface IClasses {
+interface ITeachers {
   id: string;
   name: string;
   avatar: string;
@@ -22,7 +22,7 @@ const TeacherList = (): JSX.Element => {
   const [week_day, setWeekDay] = useState<string>('');
   const [time, setTime] = useState<string>('');
 
-  const [classes, setClasses] = useState<IClasses[]>([]);
+  const [teachers, setTeachers] = useState<ITeachers[]>([]);
 
   useEffect(() => {
     let paramsVerification = true;
@@ -40,7 +40,7 @@ const TeacherList = (): JSX.Element => {
           },
         })
         .then(res => {
-          setClasses(res.data.classes);
+          setTeachers(res.data);
         });
     }
   }, [week_day, time, subject]);
@@ -103,7 +103,7 @@ const TeacherList = (): JSX.Element => {
       </PageHeader>
 
       <main>
-        {classes.map(data => (
+        {teachers.map(data => (
           <TeacherItem
             key={data.id}
             id={data.id}
